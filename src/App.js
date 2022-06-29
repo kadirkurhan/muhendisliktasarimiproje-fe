@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import Hosts from "./pages/Hosts";
+
 export default function App() {
   return (
     <Router>
@@ -12,19 +14,16 @@ export default function App() {
         <Navbar></Navbar>
         <div id="content">
           <Routes>
+            <Route path="/hosts" exact element={<Hosts />} />
             <Route path="/about" exact element={<About />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Hosts />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
 }
 
 function About() {
