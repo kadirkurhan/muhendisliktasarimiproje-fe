@@ -2,12 +2,11 @@ import React from "react";
 import Card from "../../components/Card";
 import { Grid } from "@chakra-ui/react";
 import { useQuery } from "react-query";
+import { fetchHostList } from "../../api/api";
 function Hosts() {
-  const { isLoading, error, data } = useQuery("hosts", () =>
-    fetch("https://localhost:7069/api/gethostsleftmenufake").then((res) =>
-      res.json()
-    )
-  );
+  const { isLoading, error, data } = useQuery("hosts", fetchHostList, {
+    refetchInterval: 5000,
+  });
 
   if (isLoading) return "Loading...";
 
